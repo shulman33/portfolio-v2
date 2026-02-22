@@ -154,9 +154,28 @@ export default function ChatWidget() {
           <ChatMessage
             key={message.id}
             message={message}
-            isStreaming={isLoading && message.id === lastAssistantId}
+            isStreaming={status === "streaming" && message.id === lastAssistantId}
           />
         ))}
+
+        {/* Thinking indicator — shown after send, before streaming starts */}
+        {status === "submitted" && (
+          <div
+            className="flex flex-col items-start self-start"
+            style={{ maxWidth: "85%" }}
+          >
+            <div className="px-3 py-2.5 bg-surface-2 border border-border">
+              <div className="flex items-center gap-1.5">
+                <span className="typing-dot" />
+                <span className="typing-dot [animation-delay:0.15s]" />
+                <span className="typing-dot [animation-delay:0.3s]" />
+              </div>
+            </div>
+            <span className="font-mono text-[0.55rem] tracking-wider text-text-muted mt-1">
+              ~ thinking
+            </span>
+          </div>
+        )}
 
         {/* Error bubble */}
         {error && (
@@ -164,10 +183,10 @@ export default function ChatWidget() {
             <p>
               Something went wrong. Try again or reach Sam directly at{" "}
               <a
-                href="mailto:sam@shulman.dev"
+                href="mailto:samshulman6@gmail.com"
                 className="text-green underline decoration-green/30"
               >
-                sam@shulman.dev
+                samshulman6@gmail.com
               </a>
             </p>
             <button
