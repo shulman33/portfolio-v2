@@ -11,7 +11,7 @@
   --border-bright: #353550;
   --text: #E2E2F0;
   --text-dim: #888898;
-  --text-muted: #3A3A55;
+  --text-muted: #5A5A75;
   --green: #00E87A;
   --green-dim: rgba(0, 232, 122, 0.15);
   --green-glow: 0 0 20px rgba(0, 232, 122, 0.25);
@@ -62,6 +62,11 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
   body {
     background-color: var(--void);
     color: var(--text);
@@ -95,6 +100,22 @@
   }
   ::-webkit-scrollbar-thumb {
     background: var(--green);
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .cursor-blink,
+  .status-pulse::before {
+    animation: none;
   }
 }
 
@@ -142,5 +163,19 @@
     background: var(--green);
     box-shadow: 0 0 6px var(--green);
     animation: pulse-green 2s infinite;
+  }
+
+  /* Hero grid background */
+  .hero-grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid-bg {
+      background-size: 36px 36px;
+    }
   }
 }

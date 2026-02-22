@@ -21,9 +21,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Sam Shulman — Software Engineer",
+  title: "Sam Shulman — Software Engineer & AI Builder",
   description:
-    "Software engineer building AI systems, product infrastructure, and developer tools.",
+    "Portfolio of Samuel Shulman. Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
 };
 
 export default function RootLayout({
@@ -36,6 +36,12 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${fragmentMono.variable} ${dmSans.variable} antialiased`}
       >
+        <a
+          href="#hero"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[10001] focus:bg-green focus:text-void focus:px-4 focus:py-2 font-mono text-sm"
+        >
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>
