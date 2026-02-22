@@ -7,11 +7,11 @@ export const contentType = "image/png";
 
 export default async function OGImage() {
   const [syneBold, fragmentMono] = await Promise.all([
+    fetch(new URL("./fonts/Syne-ExtraBold.ttf", import.meta.url)).then((res) =>
+      res.arrayBuffer()
+    ),
     fetch(
-      "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxp2zHgFZPYEYBbHSm6VY.ttf"
-    ).then((res) => res.arrayBuffer()),
-    fetch(
-      "https://fonts.gstatic.com/s/fragmentmono/v4/4iCr6K5wdBRKGlF1yUn7g2FY.ttf"
+      new URL("./fonts/FragmentMono-Regular.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer()),
   ]);
 
