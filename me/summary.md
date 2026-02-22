@@ -28,6 +28,8 @@ I care about the "why" behind requirements. Understanding the problem deeply hel
 
 I'm comfortable working solo or collaborating with a team. Both have their place, and I adapt to what the project needs.
 
+I'm a big believer in AI-assisted development done right. Claude Code is a core part of my workflow—I use it daily to move faster and tackle more ambitious projects than I could alone. That said, I've developed a sophisticated set of practices and guardrails to make sure the output stays high quality. I care deeply about keeping my codebase clean and intentional; AI slop is a real risk and I take it seriously. The goal is always code I'm proud to own, not just code that ships.
+
 ## What I'm Looking For
 
 I want roles where I can see real impact on users. The best feeling is knowing that something I built actually helped someone.

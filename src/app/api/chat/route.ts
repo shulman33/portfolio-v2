@@ -74,7 +74,7 @@ export async function POST(req: Request) {
     tools: {
       sendEmail: tool({
         description:
-          "Send an email to Sam with the recruiter's message and conversation summary. Use this when a recruiter wants to get in touch with Sam directly, express interest in his profile, or schedule a conversation.",
+          "Send an email to the real Sam with the recruiter's message and conversation summary. Use this when a recruiter wants to connect directly, express interest, or schedule a conversation.",
         inputSchema: z.object({
           recruiterEmail: z.email("Please provide a valid email address"),
           message: z
@@ -109,7 +109,7 @@ export async function POST(req: Request) {
               html,
             });
 
-            return "Your message has been sent to Sam. He typically responds within 24-48 hours. Thanks for reaching out!";
+            return "Done! I've passed your info along to the real me. I typically respond within 24-48 hours. Thanks for reaching out!";
           } catch (error) {
             console.error(
               JSON.stringify({
@@ -119,7 +119,7 @@ export async function POST(req: Request) {
                   error instanceof Error ? error.message : String(error),
               }),
             );
-            return "I wasn't able to send your message due to a technical issue. You can reach Sam directly at samshulman6@gmail.com. Sorry for the inconvenience!";
+            return "I wasn't able to send your message due to a technical issue. You can reach me directly at samshulman6@gmail.com. Sorry about that!";
           }
         },
       }),

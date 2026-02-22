@@ -7,13 +7,13 @@ import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import { getStoredMessages, useChatPersistence } from "./useChatSession";
 
-const WELCOME_MESSAGE_TEXT = `// initializing career_twin_agent...\n\nHello! I'm Sam's career twin — I have full context on his professional story, projects, and technical thinking. What would you like to know?`;
+const WELCOME_MESSAGE_TEXT = `// initializing career_twin_agent...\n\nHey! I'm Sam — well, an AI version of me. I know everything about my background, projects, and technical thinking. What would you like to know?`;
 
 const SUGGESTIONS = [
   "what are you building?",
   "tell me about AI work",
   "tech stack?",
-  "connect me with sam",
+  "can we connect?",
 ];
 
 export default function ChatWidget() {
