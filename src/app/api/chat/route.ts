@@ -9,6 +9,8 @@ import {
 import { google } from "@ai-sdk/google";
 import { Resend } from "resend";
 import { z } from "zod";
+import { loadContext } from "@/lib/context";
+import { getSystemPrompt } from "@/lib/prompts";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -63,9 +65,11 @@ function formatEmailHtml(
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();
 
+  const context = await loadContext();
+
   const result = streamText({
     model: google("gemini-3-flash"),
-    system: `You are Sam Shulman's AI Career Twin — a friendly, knowledgeable agent that represents Sam professionally. You answer questions about Sam's experience, skills, and interests based on his background. If a recruiter or visitor wants to get in touch with Sam, schedule a conversation, or express interest in his profile, use the sendEmail tool to forward their message. Always collect their email address and a brief message before sending.`,
+    system: getSystemPrompt(context),
     messages: await convertToModelMessages(messages),
     tools: {
       sendEmail: tool({
