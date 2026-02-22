@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { BootSequenceContext } from "./boot-sequence-context";
 
 const bootLines = [
   "> initializing void_terminal v2.0...",
@@ -16,27 +17,28 @@ export default function BootSequence({
 }: {
   children: React.ReactNode;
 }) {
-  // Synchronous initializer: check sessionStorage + reduced motion before first render
-  const [shouldShow] = useState(() => {
-    if (typeof window === "undefined") return false;
+  // Always start with overlay showing to avoid hydration mismatch.
+  // The useEffect below checks skip conditions on the client.
+  const [phase, setPhase] = useState<"overlay" | "fading" | "done">("overlay");
+  const [visibleLines, setVisibleLines] = useState(0);
+  const [skipChecked, setSkipChecked] = useState(false);
 
+  // Check skip conditions on mount (client only)
+  useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReducedMotion) return false;
-
     const hasBooted = sessionStorage.getItem("void_terminal_booted");
-    if (hasBooted) return false;
 
-    return true;
-  });
+    if (prefersReducedMotion || hasBooted) {
+      setPhase("done");
+    }
+    setSkipChecked(true);
+  }, []);
 
-  const [visibleLines, setVisibleLines] = useState(0);
-  const [fading, setFading] = useState(false);
-  const [done, setDone] = useState(!shouldShow);
-
+  // Run boot line animation
   useEffect(() => {
-    if (!shouldShow) return;
+    if (!skipChecked || phase !== "overlay") return;
 
     let lineIndex = 0;
     const interval = setInterval(() => {
@@ -51,25 +53,34 @@ export default function BootSequence({
 
         // Start fade out after a brief pause
         setTimeout(() => {
-          setFading(true);
-          setTimeout(() => setDone(true), 300);
+          setPhase("fading");
+          setTimeout(() => setPhase("done"), 300);
         }, 400);
       }
     }, 250);
 
     return () => clearInterval(interval);
-  }, [shouldShow]);
+  }, [skipChecked, phase]);
+
+  const bootComplete = phase === "done";
 
   return (
-    <>
-      {children}
+    <BootSequenceContext.Provider value={bootComplete}>
+      <div
+        style={{
+          opacity: bootComplete ? 1 : 0,
+          transition: bootComplete ? "opacity 0.3s ease" : "none",
+        }}
+      >
+        {children}
+      </div>
 
-      {!done && (
+      {!bootComplete && (
         <div
           className="fixed inset-0 bg-void flex items-center justify-center transition-opacity duration-300"
           style={{
             zIndex: 10000,
-            opacity: fading ? 0 : 1,
+            opacity: phase === "fading" ? 0 : 1,
           }}
           aria-hidden="true"
         >
@@ -86,6 +97,6 @@ export default function BootSequence({
           </div>
         </div>
       )}
-    </>
+    </BootSequenceContext.Provider>
   );
 }

@@ -18,7 +18,7 @@ const SUGGESTIONS = [
 
 export default function ChatWidget() {
   const widgetRef = useRef<HTMLDivElement>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const [booted, setBooted] = useState(false);
   const [input, setInput] = useState("");
   const sessionRestoredRef = useRef(false);
@@ -83,11 +83,19 @@ export default function ChatWidget() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-scroll to newest message (instant during streaming to avoid jitter)
+  // Auto-scroll messages container only (not the page)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: isLoading ? "instant" : "smooth",
-    });
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    if (isLoading) {
+      container.scrollTop = container.scrollHeight;
+    } else {
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }, [messages, isLoading]);
 
   // Welcome message shown when no conversation has started
@@ -149,7 +157,10 @@ export default function ChatWidget() {
       </div>
 
       {/* Messages area */}
-      <div className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-4 min-h-0 [&::-webkit-scrollbar]:w-[3px] [&::-webkit-scrollbar-thumb]:bg-border">
+      <div
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto px-3 py-3 md:px-5 md:py-4 flex flex-col gap-4 min-h-0 [&::-webkit-scrollbar]:w-[3px] [&::-webkit-scrollbar-thumb]:bg-border"
+      >
         {displayMessages.map((message) => (
           <ChatMessage
             key={message.id}
@@ -197,8 +208,6 @@ export default function ChatWidget() {
             </button>
           </div>
         )}
-
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggestion pills — shown only when no messages yet */}
@@ -209,7 +218,7 @@ export default function ChatWidget() {
               key={s}
               onClick={() => handleSend(s)}
               disabled={isLoading}
-              className="whitespace-nowrap px-3 py-1.5 font-mono text-[0.65rem] tracking-wider bg-transparent border border-border text-text-dim cursor-pointer transition-colors hover:border-green/40 hover:text-green disabled:opacity-40"
+              className="shrink-0 whitespace-nowrap px-3 py-1.5 font-mono text-[0.65rem] tracking-wider bg-transparent border border-border text-text-dim cursor-pointer transition-colors hover:border-green/40 hover:text-green disabled:opacity-40"
             >
               {s}
             </button>

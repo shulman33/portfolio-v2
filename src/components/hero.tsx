@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center px-5 pt-32 pb-16 md:px-10 lg:px-16 lg:pt-32 lg:pb-16"
+      className="relative min-h-screen grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] items-center px-5 pt-32 pb-16 md:px-10 lg:px-16 lg:pt-32 lg:pb-16"
     >
       {/* Grid background */}
       <div
@@ -19,14 +19,14 @@ export default function HeroSection() {
       />
 
       {/* Left column — content */}
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-hidden">
         <p className="font-mono text-green text-[0.75rem] mb-6">
           &gt; whoami --verbose
         </p>
 
         <h1
           className="font-heading font-extrabold uppercase leading-[0.9] mb-6"
-          style={{ fontSize: "clamp(4rem, 6.5vw, 7.5rem)" }}
+          style={{ fontSize: "clamp(2.2rem, 5.5vw, 6rem)" }}
         >
           <span className="block text-text">Samuel</span>
           <span

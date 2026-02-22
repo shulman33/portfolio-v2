@@ -4,7 +4,7 @@ export default function ChatSection() {
   return (
     <section
       id="chat"
-      className="px-6 py-16 lg:px-16 lg:py-28 bg-void grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start"
+      className="px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-28 bg-void grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 md:gap-12 lg:gap-20 items-start overflow-hidden"
     >
       {/* Intro column */}
       <div>

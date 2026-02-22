@@ -60,7 +60,7 @@ export default function StatsBar() {
             i < stats.length - 1 ? "lg:border-r lg:border-border" : ""
           } ${i < 2 ? "border-b lg:border-b-0 border-border" : ""}`}
         >
-          <span className="font-heading font-extrabold text-[2.5rem] text-green leading-none mb-2">
+          <span className="font-heading font-extrabold text-[2rem] md:text-[2.5rem] text-green leading-none mb-2">
             {stat.numericTarget !== undefined ? (
               <CountUpValue
                 target={stat.numericTarget}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useBootComplete } from "./boot-sequence-context";
 
 // Pre-formatted display lines for the terminal
 const displayLines = [
@@ -68,11 +69,11 @@ function colorize(line: string) {
 export default function HeroTerminal() {
   const [visibleLines, setVisibleLines] = useState(0);
   const [done, setDone] = useState(false);
-  const hasAnimated = useRef(false);
+  const bootComplete = useBootComplete();
+  const intervalCleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
+    if (!bootComplete) return;
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -84,7 +85,7 @@ export default function HeroTerminal() {
       return;
     }
 
-    // Wait for boot sequence (~1.8s) then start typewriter
+    // Small delay after boot completes for visual pacing
     const startDelay = setTimeout(() => {
       let line = 0;
       const interval = setInterval(() => {
@@ -95,10 +96,15 @@ export default function HeroTerminal() {
           setDone(true);
         }
       }, 120);
-    }, 2000);
 
-    return () => clearTimeout(startDelay);
-  }, []);
+      intervalCleanupRef.current = () => clearInterval(interval);
+    }, 200);
+
+    return () => {
+      clearTimeout(startDelay);
+      intervalCleanupRef.current?.();
+    };
+  }, [bootComplete]);
 
   return (
     <div className="border border-border overflow-hidden">
