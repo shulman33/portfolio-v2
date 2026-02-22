@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://samshulman.dev"),
   title: "Sam Shulman — Software Engineer & AI Builder",
   description:
-    "Portfolio of Samuel Shulman. Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
+    "Portfolio of Sam Shulman. Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
   openGraph: {
     title: "Sam Shulman — Software Engineer & AI Builder",
     description:

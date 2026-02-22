@@ -28,7 +28,7 @@ export default function HeroSection() {
           className="font-heading font-extrabold uppercase leading-[0.9] mb-6"
           style={{ fontSize: "clamp(2.2rem, 5.5vw, 6rem)" }}
         >
-          <span className="block text-text">Samuel</span>
+          <span className="block text-text">Sam</span>
           <span
             className="block"
             style={{

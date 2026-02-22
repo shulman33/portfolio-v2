@@ -8,8 +8,8 @@ const contactLinks = [
   },
   {
     label: "linkedin",
-    value: "linkedin.com/in/samshulman",
-    url: "https://linkedin.com/in/samshulman",
+    value: "linkedin.com/in/sam-shulman",
+    url: "https://www.linkedin.com/in/sam-shulman/",
   },
   {
     label: "github",

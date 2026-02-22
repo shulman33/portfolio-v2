@@ -6,7 +6,7 @@ import { useBootComplete } from "./boot-sequence-context";
 // Pre-formatted display lines for the terminal
 const displayLines = [
   '{',
-  '  "name": "Samuel Shulman",',
+  '  "name": "Sam Shulman",',
   '  "role": "Software Engineer + AI Builder",',
   '  "location": "New York, NY",',
   '  "stack": [',
@@ -14,7 +14,7 @@ const displayLines = [
   '    "Gemini", "TypeScript", "PostgreSQL"',
   '  ],',
   '  "focus": "AI-native applications",',
-  '  "open_to": "new opportunities",',
+  '  "building": "the future",',
   '  "ai_twin": true',
   '}',
 ];

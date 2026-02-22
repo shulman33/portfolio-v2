@@ -148,7 +148,7 @@ export default async function OGImage() {
               letterSpacing: "-0.03em",
             }}
           >
-            Samuel
+            Sam
           </span>
           <span
             style={{

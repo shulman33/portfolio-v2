@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-surface border-t border-border px-5 py-6 md:px-16">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <span className="font-mono text-[0.65rem] text-text-muted">
-          &copy; {currentYear} Samuel Shulman
+          &copy; {currentYear} Sam Shulman
         </span>
 
         <div className="flex items-center gap-3 font-mono text-[0.65rem] text-text-muted">
