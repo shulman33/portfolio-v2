@@ -16,7 +16,7 @@ const resend = new Resend(process.env.RESEND_API_KEY!);
 
 async function summarizeConversation(conversation: string): Promise<string> {
   const { text } = await generateText({
-    model: google("gemini-3-flash"),
+    model: google("gemini-3-flash-preview"),
     prompt: `Summarize this recruiter-agent conversation in 3-5 bullet points.
 Focus on: what the recruiter asked about, key topics discussed, and any specific interests they expressed.
 Keep it concise and actionable for Sam to quickly understand the context.
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
   const context = await loadContext();
 
   const result = streamText({
-    model: google("gemini-3-flash"),
+    model: google("gemini-3-flash-preview"),
     system: getSystemPrompt(context),
     messages: await convertToModelMessages(messages),
     tools: {
