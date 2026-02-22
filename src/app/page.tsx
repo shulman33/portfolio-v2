@@ -9,7 +9,7 @@ import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 
 export default function Home() {
-  return (
+  return ( 
     <BootSequence>
       <Navbar />
       <main>
