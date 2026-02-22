@@ -36,19 +36,19 @@ export async function sendContactMessage(
     );
     return {
       success: false,
-      error: "Email service is not configured. Please contact sam@shulman.dev directly.",
+      error: "Email service is not configured. Please contact samshulman6@gmail.com directly.",
     };
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    // NOTE: "onboarding@resend.dev" is Resend's test sender.
-    // It can only deliver to the email address on your Resend account.
-    // For production, verify your domain in Resend and use e.g. "contact@shulman.dev".
+    const fromEmail = process.env.FROM_EMAIL ?? "onboarding@resend.dev";
+    const recipientEmail = process.env.RECIPIENT_EMAIL ?? "samshulman6@gmail.com";
+
     await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "sam@shulman.dev",
+      from: fromEmail,
+      to: recipientEmail,
       subject: `Portfolio contact from ${name.trim()}`,
       replyTo: email.trim(),
       text: `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`,
@@ -82,7 +82,7 @@ export async function sendContactMessage(
 
     return {
       success: false,
-      error: "Failed to send message. Please try again or email sam@shulman.dev directly.",
+      error: "Failed to send message. Please try again or email samshulman6@gmail.com directly.",
     };
   }
 }

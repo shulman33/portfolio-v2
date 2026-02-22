@@ -21,9 +21,22 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://samshulman.dev"),
   title: "Sam Shulman — Software Engineer & AI Builder",
   description:
     "Portfolio of Samuel Shulman. Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
+  openGraph: {
+    title: "Sam Shulman — Software Engineer & AI Builder",
+    description:
+      "Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sam Shulman — Software Engineer & AI Builder",
+    description:
+      "Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
+  },
 };
 
 export default function RootLayout({

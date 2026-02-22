@@ -3,8 +3,8 @@ import ContactForm from "./contact-form";
 const contactLinks = [
   {
     label: "email",
-    value: "sam@shulman.dev",
-    url: "mailto:sam@shulman.dev",
+    value: "samshulman6@gmail.com",
+    url: "mailto:samshulman6@gmail.com",
   },
   {
     label: "linkedin",
