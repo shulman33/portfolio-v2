@@ -21,7 +21,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://samshulman.dev"),
+  metadataBase: new URL("https://www.samjshulman.com"),
   title: "Sam Shulman — Software Engineer & AI Builder",
   description:
     "Portfolio of Sam Shulman. Software engineer building AI-native applications with Next.js, Python, LangChain, and Gemini.",
