@@ -44,7 +44,7 @@ export default function HeroSection() {
           <strong className="text-text font-normal">
             Software engineer &amp; AI systems builder.
           </strong>{" "}
-          I design intelligent interfaces and robust backends — and I built an
+          I design intelligent interfaces and robust backends and built an
           AI twin that knows my career better than a resume ever could.
         </p>
 

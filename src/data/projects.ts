@@ -15,21 +15,26 @@ export const projects: Project[] = [
     title: "Career Twin Agent",
     description:
       "Agentic AI system with full professional context. Handles nuanced conversations and recruiter outreach via email tools.",
-    tags: ["LangChain", "Gemini", "Python"],
-    links: [{ label: "view_project", url: "#" }],
+    tags: ["Next.js", "Vercel AI SDK", "Gemini", "Resend"],
+    links: [{ label: "view_project", url: "https://www.samjshulman.com/" }, { label: "view_source", url: "https://github.com/shulman33/portfolio-v2" }],
   },
   {
-    title: "Portfolio Platform",
+    title: "MarketLinter",
     description:
-      "This site — Next.js with a native AI chat interface, terminal-inspired design system, and dynamic OG generation.",
-    tags: ["Next.js", "Tailwind", "TypeScript"],
-    links: [{ label: "view_source", url: "https://github.com/shulman33" }],
+      "GenAI platform that validates startup ideas by gathering demand signals from social platforms using multi-model LLM orchestration.",
+    tags: ["Next.js", "FastAPI", "Gemini", "xAI Grok", "OpenAI"],
+    links: [{ label: "view_project", url: "https://www.marketlinter.com/" }],
   },
   {
-    title: "Distributed Research",
+    title: "ImIn",
     description:
-      "Research into fault-tolerant architectures focusing on consensus algorithms and partition tolerance.",
-    tags: ["Python", "Distributed", "Research"],
-    links: [{ label: "view_project", url: "#" }],
+      "Automated course registration system that enrolled students in under one second when slots opened. Served 50% of the student body.",
+    tags: ["Full-Stack", "Automation"],
+    links: [
+      {
+        label: "view_source",
+        url: "https://github.com/shulman33/imin-fullstack",
+      },
+    ],
   },
 ];

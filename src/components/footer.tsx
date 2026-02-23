@@ -19,7 +19,7 @@ export default function Footer() {
           </span>
           <span aria-hidden="true">|</span>
           <a
-            href="https://github.com/shulman33"
+            href="https://github.com/shulman33/portfolio-v2"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-green transition-colors"
