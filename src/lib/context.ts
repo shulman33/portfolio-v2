@@ -1,28 +1,9 @@
 import fs from "fs/promises";
 import path from "path";
-import { PDFParse } from "pdf-parse";
 
 const ME_DIR = path.join(process.cwd(), "me");
 
 let cachedContext: string | null = null;
-
-async function loadPdf(filePath: string): Promise<string> {
-  try {
-    const data = await fs.readFile(filePath);
-    const parser = new PDFParse({ data });
-    const result = await parser.getText();
-    return result.text.trim();
-  } catch (e) {
-    console.error(
-      JSON.stringify({
-        level: "warn",
-        message: `Failed to load PDF ${filePath}`,
-        error: e instanceof Error ? e.message : String(e),
-      }),
-    );
-    return "";
-  }
-}
 
 async function loadMarkdown(filePath: string): Promise<string> {
   try {
@@ -45,8 +26,8 @@ export async function loadContext(): Promise<string> {
 
   const [summary, resume, linkedin] = await Promise.all([
     loadMarkdown(path.join(ME_DIR, "summary.md")),
-    loadPdf(path.join(ME_DIR, "resume.pdf")),
-    loadPdf(path.join(ME_DIR, "linkedin.pdf")),
+    loadMarkdown(path.join(ME_DIR, "resume.md")),
+    loadMarkdown(path.join(ME_DIR, "linkedin.md")),
   ]);
 
   const sections: string[] = [];
@@ -58,7 +39,7 @@ export async function loadContext(): Promise<string> {
   if (sections.length === 0) {
     throw new Error(
       "Failed to load any context documents. " +
-        "Ensure files exist in the me/ directory: summary.md, resume.pdf, linkedin.pdf",
+        "Ensure files exist in the me/ directory: summary.md, resume.md, linkedin.md",
     );
   }
 

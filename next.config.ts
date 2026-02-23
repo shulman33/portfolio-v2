@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["pdfjs-dist"],
+  outputFileTracingIncludes: {
+    "/api/chat": ["./me/**/*"],
+  },
 };
 
 export default nextConfig;
