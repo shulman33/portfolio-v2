@@ -1,8 +1,8 @@
 const skillGroups = [
-  { category: "frontend", skills: ["React / Next.js", "TypeScript", "Tailwind CSS"] },
-  { category: "ai_ml", skills: ["LangChain", "Python", "Gemini / GPT APIs"] },
-  { category: "backend", skills: ["Node.js", "PostgreSQL", "Cloud / DevOps"] },
-  { category: "tools", skills: ["Git / CI/CD", "Docker", "Vercel / AWS"] },
+  { category: "frontend", skills: ["React / Next.js", "TypeScript", "JavaScript", "Tailwind CSS"] },
+  { category: "ai_ml", skills: ["Agentic Systems", "LangChain", "Python", "Claude", "OpenAI", "Gemini", "xAI / Grok", "Context Engineering"] },
+  { category: "backend", skills: ["Node.js", "FastAPI", "Java", "PostgreSQL", "Redis", "Supabase"] },
+  { category: "infra", skills: ["AWS (Scalable Architectures, Serverless)", "Docker", "Vercel"] },
 ];
 
 export default function SkillsSection() {
