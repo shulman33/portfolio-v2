@@ -9,8 +9,10 @@ import {
 import { google } from "@ai-sdk/google";
 import { Resend } from "resend";
 import { z } from "zod";
+import { after } from "next/server";
 import { loadContext } from "@/lib/context";
 import { getSystemPrompt } from "@/lib/prompts";
+import { langfuseSpanProcessor } from "@/instrumentation";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -22,6 +24,10 @@ Focus on: what the recruiter asked about, key topics discussed, and any specific
 Keep it concise and actionable for Sam to quickly understand the context.
 
 ${conversation}`,
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "summarize-conversation",
+    },
   });
   return text;
 }
@@ -125,6 +131,14 @@ export async function POST(req: Request) {
       }),
     },
     stopWhen: stepCountIs(3),
+    experimental_telemetry: {
+      isEnabled: true,
+      functionId: "career-twin-chat",
+    },
+  });
+
+  after(async () => {
+    await langfuseSpanProcessor.forceFlush();
   });
 
   return result.toUIMessageStreamResponse();
