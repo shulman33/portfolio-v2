@@ -106,7 +106,7 @@ export default async function OGImage() {
           <span
             style={{
               fontFamily: "Fragment Mono",
-              fontSize: "12px",
+              fontSize: "14px",
               color: "#5A5A75",
               marginLeft: "16px",
             }}
@@ -128,7 +128,7 @@ export default async function OGImage() {
           <span
             style={{
               fontFamily: "Fragment Mono",
-              fontSize: "16px",
+              fontSize: "22px",
               color: "#00E87A",
               marginBottom: "24px",
             }}
@@ -141,7 +141,7 @@ export default async function OGImage() {
             style={{
               fontFamily: "Syne",
               fontWeight: 800,
-              fontSize: "82px",
+              fontSize: "110px",
               color: "#E2E2F0",
               lineHeight: 0.9,
               textTransform: "uppercase",
@@ -154,14 +154,12 @@ export default async function OGImage() {
             style={{
               fontFamily: "Syne",
               fontWeight: 800,
-              fontSize: "82px",
+              fontSize: "110px",
               lineHeight: 0.9,
               textTransform: "uppercase",
               letterSpacing: "-0.03em",
-              color: "transparent",
+              color: "#00E87A",
               marginBottom: "32px",
-              // Outline text effect via text-shadow trick for Satori
-              WebkitTextStroke: "2px #00E87A",
             }}
           >
             Shulman
@@ -171,7 +169,7 @@ export default async function OGImage() {
           <span
             style={{
               fontFamily: "Fragment Mono",
-              fontSize: "20px",
+              fontSize: "28px",
               color: "#00E87A",
               marginBottom: "16px",
             }}
@@ -183,7 +181,7 @@ export default async function OGImage() {
           <span
             style={{
               fontFamily: "Fragment Mono",
-              fontSize: "14px",
+              fontSize: "20px",
               color: "#888898",
             }}
           >
