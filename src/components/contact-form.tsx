@@ -21,6 +21,18 @@ export default function ContactForm() {
 
   return (
     <form ref={formRef} action={formAction} className="space-y-4">
+      {/* Honeypot — invisible to humans, bots auto-fill it */}
+      <div className="absolute opacity-0 h-0 w-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div>
         <label
           htmlFor="contact-name"
@@ -33,6 +45,7 @@ export default function ContactForm() {
           name="name"
           type="text"
           required
+          maxLength={200}
           placeholder="Your name"
           className="w-full bg-surface-2 border border-border font-mono text-[0.82rem] text-text px-4 py-3 placeholder:text-text-muted focus:border-green/35 focus:outline-none transition-colors"
         />
@@ -50,6 +63,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
+          maxLength={320}
           placeholder="you@example.com"
           className="w-full bg-surface-2 border border-border font-mono text-[0.82rem] text-text px-4 py-3 placeholder:text-text-muted focus:border-green/35 focus:outline-none transition-colors"
         />
@@ -67,6 +81,7 @@ export default function ContactForm() {
           name="message"
           required
           rows={4}
+          maxLength={5000}
           placeholder="Your message..."
           className="w-full bg-surface-2 border border-border font-mono text-[0.82rem] text-text px-4 py-3 placeholder:text-text-muted focus:border-green/35 focus:outline-none transition-colors resize-none"
         />

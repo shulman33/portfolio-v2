@@ -11,6 +11,18 @@ export async function sendContactMessage(
   _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  // Honeypot check — bots fill hidden fields, humans don't
+  const honeypot = formData.get("website") as string;
+  if (honeypot) {
+    console.log(
+      JSON.stringify({
+        event: "contact_form_honeypot_triggered",
+        timestamp: new Date().toISOString(),
+      })
+    );
+    return { success: true };
+  }
+
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const message = formData.get("message") as string;
@@ -24,6 +36,15 @@ export async function sendContactMessage(
   }
   if (!message || !message.trim()) {
     return { success: false, error: "Message is required." };
+  }
+  if (name.length > 200) {
+    return { success: false, error: "Name must be under 200 characters." };
+  }
+  if (email.length > 320) {
+    return { success: false, error: "Email must be under 320 characters." };
+  }
+  if (message.length > 5000) {
+    return { success: false, error: "Message must be under 5000 characters." };
   }
 
   if (!process.env.RESEND_API_KEY) {
