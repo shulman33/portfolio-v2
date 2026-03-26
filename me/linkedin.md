@@ -31,14 +31,19 @@ for federal compliance without anyone noticing.
 Day to day, that means a lot of AWS Step Functions, serverless
 architecture, and figuring out how to make healthcare systems
 actually talk to each other.
-I can't stop building things on the side. Right now I'm working on
-MarketLinter, a market validation tool that orchestrates multiple LLMs
-to help indie devs validate startup ideas, and ResumeForge, which
-parses resumes into structured data and generates ATS-optimized
-versions for specific job postings. I also have an AI chatbot that
-talks to recruiters for me (you might be chatting with it) and a course
-registration system I built in college that 50% of the student body
-ended up using.
+I can't stop building things on the side. My biggest project right
+now is HelloMealio, an AI-powered dinner planning and recipe
+management app that I turned into my first company. My wife got
+tired of buying one-off grocery ingredients that went to waste every
+week, so I built an app that stores your recipes and uses AI to
+generate meal plans optimized for overlapping ingredients—fewer
+trips, less waste, real savings. It's a React Native app with a
+Python FastAPI backend and Postgres, and I've had to lean on
+everything I know about distributed systems to make it perform
+under real load. I also have an AI chatbot that talks to recruiters
+for me (you might be chatting with it) and a course registration
+system I built in college that 50% of the student body ended up
+using.
 I want to work somewhere I can learn from engineers who are better
 than me and ship things that people actually use. Startups interest
 me because I like seeing what I build hit production fast.
