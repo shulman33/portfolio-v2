@@ -43,3 +43,5 @@ next-env.d.ts
 
 # local examples
 /example
+/.playwright-mcp
+ai-twin-resume-bullets.txt

@@ -5,17 +5,17 @@ www.linkedin.com/in/sam-shulman
 github.com/shulman33 (Other)
 www.samjshulman.com/ (Portfolio)
 Top Skills
-Full-Stack Development
-Software Architecture
-Software Architectural Design
+Claude Code
+OpenAI Codex
+Model Context Protocol (MCP)
 Languages
 Hebrew (Professional Working)
 Certifications
-Programming with JavaScript
-React Basics
 Building Data Lakes on AWS
 Workato Foundations Level 2
 AWS Cloud Technical Essentials
+Architecting Solutions on AWS
+Jira Fundamentals Badge
 Honors-Awards
 Deans List
 Second Place Hackathon Winner
@@ -49,12 +49,12 @@ interesting opportunities.
 Experience
 Healthfirst
 Enterprise Solutions Architect
-September 2025 - Present (5 months)
-Page 1 of 4
+September 2025 - Present (7 months)
+Page 1 of 3
 
--- 1 of 4 --
+-- 1 of 3 --
 
-New York, New York, United States
+New York, NY
 Support healthcare interoperability initiatives by architecting AWS-based
 solutions that enable seamless data exchange across Healthfirst's complex
 organizational ecosystem. Maintain enterprise-wide visibility across 12
@@ -69,11 +69,9 @@ standards
 solutions for HL7 FHIR resources and healthcare data exchange
 - Assess organizational technology landscape spanning multiple business
 units, identifying integration opportunities and potential architectural risks
-- Partner with stakeholders across verticals to establish technology patterns
-and standards that enable interoperability while maintaining HIPAA compliance
 AppHammer
 Full Stack Engineer
-January 2025 - Present (1 year 1 month)
+January 2025 - July 2025 (7 months)
 - Developed backend APIs and managed data models using Django and
 Wagtail for a virtual vendor platform enabling remote product inquiries,
 effectively replacing traditional vendor fairs.
@@ -90,12 +88,12 @@ Teaneck, New Jersey, United States
 - Partnered with a team of interns to develop comprehensive Power BI reports
 from petabytes of healthcare data, enabling insurance companies to enhance
 population health and boost revenue.
-Page 2 of 4
-
--- 2 of 4 --
-
 - Improved Power BI report visualization loading time by 80% through SQL
 query optimization, significantly boosting user experience and report efficiency.
+Page 2 of 3
+
+-- 2 of 3 --
+
 SIDEARM Sports
 Jr. Developer
 April 2023 - October 2023 (7 months)
@@ -128,10 +126,6 @@ Syracuse University
 Information Technology · (2020 - 2021)
 Rae Kushner Yeshiva High School
 · (2015 - 2019)
-Page 3 of 4
+Page 3 of 3
 
--- 3 of 4 --
-
-Page 4 of 4
-
--- 4 of 4 --
+-- 3 of 3 --
