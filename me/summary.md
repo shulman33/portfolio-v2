@@ -30,6 +30,18 @@ I'm comfortable working solo or collaborating with a team. Both have their place
 
 I'm a big believer in AI-assisted development done right. Claude Code is a core part of my workflow—I use it daily to move faster and tackle more ambitious projects than I could alone. That said, I've developed a sophisticated set of practices and guardrails to make sure the output stays high quality. I care deeply about keeping my codebase clean and intentional; AI slop is a real risk and I take it seriously. The goal is always code I'm proud to own, not just code that ships.
 
+## HelloMealio — From Kitchen Frustration to My First Company
+
+HelloMealio started at home. My wife Noa got sick of the weekly meal-planning struggle—spending time picking recipes, running to the grocery store for a bunch of one-off ingredients that would get used once and then go to waste. We were throwing away food and money every single week. So she pitched an idea: what if we could store all the recipes we actually cook in one place, and then let AI generate a weekly meal plan optimized for overlapping ingredients? Fewer one-off purchases, less waste, more savings.
+
+I built it. What started as a solution to our own problem turned into a full end-to-end SaaS application—React Native frontend, Python FastAPI backend, Postgres database—and eventually into an LLC. I'm officially a founder now, and that still feels surreal.
+
+There's something deeply fulfilling about building something from nothing, watching real people use it, and being able to point at it and say "I built that from the ground up." Taking HelloMealio from a kitchen-table concept to a real company has been one of the most exciting journeys of my life.
+
+It's also been the most humbling. I learned quickly that building the app is the easier part. The real challenge is marketing, acquiring users, and keeping them. That side of the business has stretched me in ways I didn't expect and taught me lessons no CS curriculum covers.
+
+On the technical side, Claude Code has been invaluable to my workflow, but AI tooling alone doesn't build production-grade software. I leaned heavily on my Computer Science and Distributed Systems background to architect an app that handles concurrent users with acceptable performance—replacing sequential database round-trips with optimized Postgres functions, load-testing and migrating to horizontally scaled infrastructure, and instrumenting the full stack for observability. The fundamentals matter, especially when real users are depending on what you ship.
+
 ## What I'm Looking For
 
 I want roles where I can see real impact on users. The best feeling is knowing that something I built actually helped someone.
