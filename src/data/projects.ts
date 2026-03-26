@@ -12,18 +12,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "HelloMealio",
+    description:
+      "AI-powered dinner planning and recipe management app that generates weekly meal plans optimized for shared ingredients to minimize grocery waste and spending.",
+    tags: ["React Native", "FastAPI", "PostgreSQL", "Gemini", "ElevenLabs"],
+    links: [{ label: "view_project", url: "https://www.hellomealio.com/" }],
+  },
+  {
     title: "Career Twin Agent",
     description:
       "Agentic AI system with full professional context. Handles nuanced conversations and recruiter outreach via email tools.",
     tags: ["Next.js", "Vercel AI SDK", "Gemini", "Resend"],
     links: [{ label: "view_project", url: "https://www.samjshulman.com/" }, { label: "view_source", url: "https://github.com/shulman33/portfolio-v2" }],
-  },
-  {
-    title: "MarketLinter",
-    description:
-      "GenAI platform that validates startup ideas by gathering demand signals from social platforms using multi-model LLM orchestration.",
-    tags: ["Next.js", "FastAPI", "Gemini", "xAI Grok", "OpenAI"],
-    links: [{ label: "view_project", url: "https://www.marketlinter.com/" }],
   },
   {
     title: "ImIn",
