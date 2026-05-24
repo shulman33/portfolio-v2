@@ -1,52 +1,47 @@
 Samuel Shulman
-Teaneck, NJ • 973-699-8748 • samshulman6@gmail.com • linkedin.com/in/sam-shulman • https://www.samjshulman.com/
-Full-stack Software Engineer combining enterprise architecture rigor with a founder’s shipping velocity. Proven track record of designing scalable serverless
-architectures and heavily optimizing API performance under high concurrency. Currently building an end-to-end consumer SaaS application (React, Python,
-Postgres) while driving cloud architecture initiatives in a highly regulated sector. Built to compound speed and quality in fast-paced, product-driven startup
-environments.
-WORK EXPERIENCE
-HelloMealio • Teaneck, NJ 	02/2026 - Present
-Founder
-• Shipped an end-to-end SaaS application in 4 weeks by prompting and guiding Claude Code to build the application from scratch.
-• Reduced API write latency 82-95% (dropping median 3,549ms to 186ms on the slowest endpoint) by replacing up to 20 sequential Supabase round-trips
-with single-call Postgres functions, bringing all write endpoints under a 300ms budget.
-• Migrated Python FastAPI backend to micro-VMs following comprehensive load testing, resolving single-node CPU bottlenecks through horizontal
-scaling to increase throughput by 7x (to 172 req/s) and reduce p95 tail latency to 831ms under high-concurrency load.
-• Instrumented the full stack with Sentry, tracing user interactions from the frontend through the backend to database calls, to pinpoint latency bottlenecks
-• Integrated ElevenLabs text-to-speech to give users a personalized AI chef with low-latency voice responses for hands-free cooking guidance
-• Built a social media recipe import pipeline that uses AssemblyAI to transcribe the video narration, and Gemini to extract structured recipe data from the
-transcript
-• Founded a dinner planning and recipe management React Native app that dynamically generates weekly meal plans optimized for shared ingredients to
-minimize users' grocery expenses
-Healthfirst • New York, NY 	09/2025 - Present
-Enterprise Architect
-• Architected and scaled distributed data pipelines for critical interoperability systems, ensuring strict federal compliance without compromising high-
-throughput performance.
-• Resolved critical N+1 API query bottlenecks by entirely redesigning the core architecture for a high-traffic Cost Estimator platform, drastically reducing
-database load.
-• Engineered an event-driven serverless pipeline leveraging AWS Step Functions for provider data retrieval, boosting end-to-end performance by 80%.
-• Integrated Workato with LeanIX using GraphQL, achieving real-time API documentation synchronization within 3 months, enhancing operational
-efficiency.
-PROJECTS
-Career Twin
-• Built a streaming AI chat agent (Vercel AI SDK + Google Gemini) that answers recruiter questions in first person, grounded in 3 context documents to
-prevent hallucination.
-• Integrated a sendEmail tool so the agent autonomously sends formatted introduction emails with AI-generated conversation summaries via the Resend
-API, converting chat interactions into real recruiter contact.
-• Instrumented the agent with Langfuse OpenTelemetry tracing across both chat and summarization calls for end-to-end observability.
-ImIn
-Built a system that automated class enrollment in under one second when slots opened; achieved 2,256 page views serving 50% of the student body.
-SKILLS
-Frontend: Next.js, React, TypeScript, Vite
-Backend: FastAPI, Java, Node.js, PostgreSQL, Python, Redis, SQL, Supabase
-Cloud & Infra: AWS, Docker, GitHub Actions
-AI Development: Claude Code, Codex, Cursor, Gemini API, LangChain, OpenAI API
+Teaneck, New Jersey, US | +1 (973) 699-8748 | samshulman6@gmail.com | github.com/shulman33 | samjshulman.com
 
--- 1 of 2 --
+PROFESSIONAL SUMMARY
+Software engineer passionate about full-stack development with hands-on experience across React, Next.js, FastAPI, and AWS. Currently building healthcare interoperability systems at Healthfirst while shipping side projects on nights and weekends. Self-motivated learner drawn to AI engineering and product-focused teams.
+
+WORK EXPERIENCE
+
+Technology Associate, Healthfirst                                          Sep 2025 – Present
+• Engineered address-matching algorithm using NLP, fuzzy matching, and rule-based scoring; cut manual claim adjudication from 50%+ to under 10% across 4M+ monthly claims.
+• Built Python sync service between Workato and LeanIX, automating documentation updates across 500+ APIs to eliminate stale architecture records.
+• Architected Cost Estimator PoC using AWS Step Functions to parallelize provider lookups across Lambdas, resolving N+1 bottleneck.
+
+PROJECTS
+
+Real-Time Market Data Platform (shulman33.github.io/market-pipeline)       May 2026 – Present
+• Architected a four-service microservices platform in Python and Java for real-time equity ingestion and order matching; containerized with Docker, deployed to Amazon Web Services (AWS), and shipped through a GitHub Actions CI/CD pipeline.
+• Engineered a limit-order-book matching engine in Java with price-time priority, applying data structures and algorithms (TreeMap, HashMap, doubly-linked FIFO queues) to keep order submission and cancellation fast; persisted to PostgreSQL via JDBC.
+• Built an async Python WebSocket client against a low-latency trade feed with auto-reconnect and a stale-stream watchdog; flagged real-time price anomalies with a hand-rolled rolling z-score detector and wrote each tick atomically to PostgreSQL.
+• Exposed the system via a FastAPI REST service and a Streamlit + Plotly dashboard; verified end-to-end through 46 automated tests with real PostgreSQL integration tests.
+
+HelloMealio (hellomealio.com)                                              March 2026 – Present
+• Engineered deterministic greedy + 1-swap algorithm to replace Gemini LLM meal planner; 250× faster (3s → 10ms) and beat LLM quality in 13 of 15 head-to-head trials.
+• Built AI pipeline with AssemblyAI and Gemini to extract structured recipe data from social media videos and shared links.
+• Built single-call Postgres RPC functions to consolidate multi-statement transactions; reduced API write latency by 82–95%, all writes under 300ms.
+• Integrated Sentry tracing across React Native, FastAPI, and Postgres; diagnosed and resolved production latency bottlenecks end-to-end.
+
+Career Twin                                                                Feb 2026 – Feb 2026
+• Built streaming AI chat agent on Next.js using the Vercel AI SDK with Google Gemini, grounded in resume, LinkedIn, and personal context to answer in first person.
+• Integrated Resend API as an autonomous tool call; agent forwards recruiter messages plus AI-generated summaries to my inbox for follow-up.
+• Implemented Langfuse OpenTelemetry tracing across chat and summarization calls for end-to-end production observability of agent behavior.
+
+ImIn                                                                       Jan 2023 – June 2023
+• Engineered Selenium-based registration bot on AWS Lambda, S3, DynamoDB, and EventBridge that auto-enrolled students into classes within seconds of slots opening at YU.
+• Designed React web app where students queued target classes; system handled login, form submission, and screenshot confirmation end-to-end.
+• Achieved ~50% adoption across 2,300-student campus (2,256 page views, 946 unique in 30 days); university responded by mandating MFA on its registration system.
+
+SKILLS
+Languages: Python, React, Typescript, Javascript, HTML, CSS, SQL, Java
+Technologies: Postgres, Next.js, FastAPI, Redis, AWS, Claude Code, Claude, Supabase, Vercel, Fly.io, Langchain
 
 EDUCATION
-B.S. Computer Science, Distributed Systems Track
-Yeshiva University 	05/2025
-software engineer
+Bachelor of Science, Computer Science, Yeshiva University                  May 2025
+• Relevant Coursework: Distributed Systems, Algorithms, Operating Systems, Modern Data Management, Compilers, Industrial Software Engineering, Data Structures, Networking, Cyber Security, Database Implementation, Programming languages
 
--- 2 of 2 --
+AWARDS AND ACCOLADES
+• Yeshiva University Hackathon - Second Place                              2023

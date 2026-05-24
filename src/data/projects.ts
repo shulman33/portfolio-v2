@@ -12,6 +12,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Market Pipeline",
+    description:
+      "Real-time market data pipeline with rolling z-score anomaly detection and a Java limit-order-book matching engine using price-time priority. Python WebSocket ingestor on Finnhub, FastAPI, Streamlit dashboard, Postgres. Deployed on AWS Lightsail with GitHub Actions CI.",
+    tags: ["Python", "Java", "FastAPI", "Postgres", "Docker", "AWS"],
+    links: [
+      { label: "view_project", url: "https://shulman33.github.io/market-pipeline/" },
+      { label: "view_source", url: "https://github.com/shulman33/market-pipeline" },
+    ],
+  },
+  {
     title: "HelloMealio",
     description:
       "AI-powered dinner planning and recipe management app that generates weekly meal plans optimized for shared ingredients to minimize grocery waste and spending.",
