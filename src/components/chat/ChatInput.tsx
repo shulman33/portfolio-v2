@@ -49,7 +49,7 @@ export default function ChatInput({
         disabled={disabled}
         placeholder="// ask about experience, projects, or skills"
         rows={1}
-        maxLength={2000}
+        maxLength={5000}
         className="flex-1 resize-none bg-surface-2 border border-border px-3.5 py-2 font-mono text-[0.78rem] text-text placeholder:text-text-muted focus:border-[rgba(0,232,122,0.35)] focus:outline-none disabled:opacity-50 leading-relaxed transition-colors"
       />
       <button
