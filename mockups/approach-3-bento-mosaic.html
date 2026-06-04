@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Approach 3 — Bento Mosaic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Fragment+Mono:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --void:#080810; --surface:#0F0F1A; --surface-2:#15151f;
+    --green:#00E87A; --purple:#9B7FD4; --blue:#5B9CF6;
+    --text:#E9E9F2; --text-dim:#A6A6B8; --text-muted:#5b5b70;
+    --border:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--void);color:var(--text);font-family:"DM Sans",sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.16) 3px,rgba(0,0,0,0) 4px);mix-blend-mode:multiply;opacity:.5}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:64px 24px 100px}
+  .approach-tag{font-family:"Fragment Mono",monospace;font-size:.7rem;color:var(--text-muted);letter-spacing:.1em;margin-bottom:8px}
+  .approach-title{font-family:"Syne",sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:6px}
+  .approach-desc{color:var(--text-dim);font-size:.9rem;max-width:660px;line-height:1.7;margin-bottom:48px}
+  .section-head{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+  .section-head span{font-family:"Fragment Mono",monospace;font-size:.72rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase}
+  .section-head .rule{flex:1;height:1px;background:var(--border)}
+
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:12px}
+  @media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.bento{grid-template-columns:1fr;grid-auto-rows:230px}}
+
+  .tile{position:relative;overflow:hidden;border:1px solid var(--border);background:var(--surface);text-decoration:none;color:inherit;display:block;
+    opacity:0;transform:scale(.97);animation:pop .6s cubic-bezier(.2,.7,.2,1) forwards}
+  .tile:nth-child(1){animation-delay:.05s}
+  .tile:nth-child(2){animation-delay:.13s}
+  .tile:nth-child(3){animation-delay:.21s}
+  .tile:nth-child(4){animation-delay:.29s}
+  .tile:nth-child(5){animation-delay:.37s}
+  .tile:nth-child(6){animation-delay:.45s}
+  @keyframes pop{to{opacity:1;transform:none}}
+
+  /* spans */
+  .feature{grid-column:span 2;grid-row:span 2}
+  .wide{grid-column:span 2}
+  .tall{grid-row:span 2}
+  @media(max-width:900px){.feature{grid-column:span 2;grid-row:span 2}.wide{grid-column:span 2}.tall{grid-row:span 1}}
+  @media(max-width:560px){.feature,.wide,.tall{grid-column:span 1;grid-row:span 1}}
+
+  .tile .bg{position:absolute;inset:0;background-size:cover;background-position:top center;filter:saturate(.7) brightness(.7);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .6s}
+  .tile:hover .bg{transform:scale(1.06);filter:saturate(1.05) brightness(.95)}
+  .tile .scan{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px);pointer-events:none}
+  .tile .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,16,.95) 0%,rgba(8,8,16,.55) 38%,rgba(8,8,16,.05) 70%);transition:background .5s}
+  .tile:hover .veil{background:linear-gradient(to top,rgba(8,8,16,.92) 0%,rgba(8,8,16,.4) 45%,rgba(8,8,16,0) 80%)}
+  .tile .ring{position:absolute;inset:0;box-shadow:inset 0 0 0 1px transparent;transition:box-shadow .4s;pointer-events:none}
+  .tile:hover .ring{box-shadow:inset 0 0 0 1px var(--green),0 0 30px -6px rgba(0,232,122,.4)}
+
+  .content{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;z-index:3}
+  .idx{font-family:"Fragment Mono",monospace;font-size:.58rem;color:var(--green);letter-spacing:.12em;display:block;margin-bottom:8px}
+  .t-title{font-family:"Syne",sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:-.01em;margin-bottom:6px}
+  .feature .t-title{font-size:2rem}
+  .t-desc{font-size:.78rem;line-height:1.6;color:var(--text-dim);max-width:42ch;margin-bottom:12px;opacity:0;max-height:0;overflow:hidden;transition:opacity .45s,max-height .45s}
+  .tile:hover .t-desc{opacity:1;max-height:120px}
+  .t-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .t-tags span{font-family:"Fragment Mono",monospace;font-size:.55rem;letter-spacing:.05em;color:var(--text);border:1px solid var(--border);background:rgba(8,8,16,.5);padding:3px 7px;backdrop-filter:blur(2px)}
+  .arrow{position:absolute;top:16px;right:18px;font-family:"Fragment Mono",monospace;font-size:.95rem;color:var(--text);opacity:0;transform:translate(-4px,4px);transition:opacity .4s,transform .4s;z-index:3}
+  .tile:hover .arrow{opacity:1;transform:none;color:var(--green)}
+  .footer{margin-top:48px;font-family:"Fragment Mono",monospace;font-size:.66rem;color:var(--text-muted);text-align:center}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="approach-tag">// concept 03</div>
+    <h1 class="approach-title">Bento Mosaic</h1>
+    <p class="approach-desc">Screenshot-forward and dense. Projects become full-bleed image tiles in an asymmetric bento grid — one large feature tile anchors it, the rest vary in size. Each tile carries a gradient veil with the title always visible; the description reveals on hover as the image saturates, zooms, and gains a green ring. Most visual of the three; the screenshots do the talking.</p>
+
+    <div class="section-head"><span>// selected_projects</span><div class="rule"></div></div>
+
+    <div class="bento">
+      <!-- UAP Atlas — feature 2x2 -->
+      <a href="#" class="tile feature">
+        <div class="bg" style="background-image:url('shots/uap-atlas.jpeg')"></div>
+        <div class="scan"></div><div class="veil"></div><div class="ring"></div>
+        <span class="arrow">↗</span>
+        <div class="content">
+          <span class="idx">project_01 · declassified archive</span>
+          <h3 class="t-title">UAP Atlas</h3>
+          <p class="t-desc">161 declassified U.S. Department of War UFO/UAP files, mapped and browsable. A geolocation-aware Leaflet map surfaces the closest sighting to you.</p>
+          <div class="t-tags"><span>JavaScript</span><span>Leaflet</span><span>Node.js</span><span>Static Site</span></div>
+        </div>
+      </a>
+
+      <!-- GridClean — wide 2x1 -->
+      <a href="#" class="tile wide">
+        <div class="bg" style="background-image:url('shots/gridclean-chart.jpeg')"></div>
+        <div class="scan"></div><div class="veil"></div><div class="ring"></div>
+        <span class="arrow">↗</span>
+        <div class="content">
+          <span class="idx">project_02 · live grid carbon</span>
+          <h3 class="t-title">GridClean</h3>
+          <p class="t-desc">Live carbon intensity for any ZIP, fusing EIA-930 fuel mix with EPA factors, plus an ETS forecast of the cleanest hours ahead.</p>
+          <div class="t-tags"><span>Python</span><span>FastAPI</span><span>TimescaleDB</span><span>Claude</span></div>
+        </div>
+      </a>
+
+      <!-- HelloMealio — tall 1x2 -->
+      <a href="#" class="tile tall">
+        <div class="bg" style="background-image:url('shots/hellomealio.jpeg')"></div>
+        <div class="scan"></div><div class="veil"></div><div class="ring"></div>
+        <span class="arrow">↗</span>
+        <div class="content">
+          <span class="idx">project_04 · ai meal planning</span>
+          <h3 class="t-title">HelloMealio</h3>
+          <p class="t-desc">Weekly meal plans optimized for shared ingredients to cut grocery waste and spend. Shipping on iPhone.</p>
+          <div class="t-tags"><span>React Native</span><span>FastAPI</span><span>Gemini</span></div>
+        </div>
+      </a>
+
+      <!-- Market Pipeline — wide 2x1 -->
+      <a href="#" class="tile wide">
+        <div class="bg" style="background-image:url('shots/market-pipeline.jpeg')"></div>
+        <div class="scan"></div><div class="veil"></div><div class="ring"></div>
+        <span class="arrow">↗</span>
+        <div class="content">
+          <span class="idx">project_03 · real-time markets</span>
+          <h3 class="t-title">Market Pipeline</h3>
+          <p class="t-desc">Real-time equity ingestion + a Java limit-order-book matching engine with price-time priority. Dockerized, shipped to AWS.</p>
+          <div class="t-tags"><span>Python</span><span>Java</span><span>FastAPI</span><span>Postgres</span><span>AWS</span></div>
+        </div>
+      </a>
+    </div>
+
+    <p class="footer">concept 03 / 03 — bento mosaic · screenshots are live captures</p>
+  </div>
+</body>
+</html>

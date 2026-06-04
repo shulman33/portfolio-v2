@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Approach 1 — Terminal Window Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Fragment+Mono:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --void:#080810; --surface:#0F0F1A; --surface-2:#15151f;
+    --green:#00E87A; --purple:#9B7FD4; --blue:#5B9CF6;
+    --text:#E9E9F2; --text-dim:#A6A6B8; --text-muted:#5b5b70;
+    --border:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--void); color:var(--text);
+    font-family:"DM Sans",sans-serif; font-weight:300;
+    -webkit-font-smoothing:antialiased; position:relative; overflow-x:hidden;
+  }
+  /* scanline + grain atmosphere */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:9999;
+    background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px,rgba(0,0,0,0) 4px);
+    mix-blend-mode:multiply; opacity:.5;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:64px 24px 96px}
+  .approach-tag{font-family:"Fragment Mono",monospace;font-size:.7rem;color:var(--text-muted);letter-spacing:.1em;margin-bottom:8px}
+  .approach-title{font-family:"Syne",sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:6px}
+  .approach-desc{color:var(--text-dim);font-size:.9rem;max-width:640px;line-height:1.7;margin-bottom:48px}
+  .section-head{display:flex;align-items:center;gap:16px;margin-bottom:36px}
+  .section-head span{font-family:"Fragment Mono",monospace;font-size:.72rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase}
+  .section-head .rule{flex:1;height:1px;background:var(--border)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--void);display:flex;flex-direction:column;position:relative;
+    transition:background .35s ease;
+    opacity:0;transform:translateY(14px);animation:rise .6s ease forwards;
+  }
+  .card:nth-child(1){animation-delay:.05s}
+  .card:nth-child(2){animation-delay:.13s}
+  .card:nth-child(3){animation-delay:.21s}
+  .card:nth-child(4){animation-delay:.29s}
+  .card:nth-child(5){animation-delay:.37s}
+  .card:nth-child(6){animation-delay:.45s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .card:hover{background:var(--surface-2)}
+  .card .topline{position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:4;box-shadow:0 0 12px var(--green)}
+  .card:hover .topline{transform:scaleX(1)}
+
+  /* terminal window chrome over the screenshot */
+  .winbar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surface);border-bottom:1px solid var(--border)}
+  .dots{display:flex;gap:5px}
+  .dots i{width:8px;height:8px;display:block}
+  .dots i:nth-child(1){background:var(--green)}
+  .dots i:nth-child(2){background:var(--purple)}
+  .dots i:nth-child(3){background:var(--blue)}
+  .winpath{font-family:"Fragment Mono",monospace;font-size:.62rem;color:var(--text-muted);letter-spacing:.04em}
+
+  .shot{position:relative;height:188px;overflow:hidden;border-bottom:1px solid var(--border)}
+  .shot img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:saturate(.65) brightness(.82);transition:filter .5s ease,transform .8s ease;display:block}
+  .card:hover .shot img{filter:saturate(1.05) brightness(1);transform:scale(1.04)}
+  .shot::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.22) 3px);pointer-events:none}
+  .shot .glow{position:absolute;inset:0;box-shadow:inset 0 -40px 60px -30px var(--green);opacity:0;transition:opacity .5s ease;pointer-events:none}
+  .card:hover .shot .glow{opacity:.5}
+
+  .body{padding:22px 24px 26px}
+  .idx{font-family:"Fragment Mono",monospace;font-size:.62rem;color:var(--text-muted);letter-spacing:.1em;display:block;margin-bottom:14px}
+  .title{font-family:"Syne",sans-serif;font-weight:700;font-size:1.18rem;margin-bottom:10px}
+  .desc{font-size:.82rem;line-height:1.75;color:var(--text-dim);margin-bottom:18px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .tags span{font-family:"Fragment Mono",monospace;font-size:.58rem;letter-spacing:.06em;color:var(--purple);border:1px solid rgba(155,127,212,.22);background:rgba(155,127,212,.05);padding:3px 8px}
+  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:auto}
+  .links a{font-family:"Fragment Mono",monospace;font-size:.66rem;color:var(--text-muted);text-decoration:none;transition:color .25s}
+  .links a:hover{color:var(--green)}
+  .footer{margin-top:64px;font-family:"Fragment Mono",monospace;font-size:.66rem;color:var(--text-muted);text-align:center}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="approach-tag">// concept 01</div>
+    <h1 class="approach-title">Terminal Window Cards</h1>
+    <p class="approach-desc">Closest to the current site. Each project keeps its grid cell, but the screenshot sits on top framed like a terminal window — window bar, square traffic-lights, a scanline overlay, and a green inner-glow on hover. The image desaturates at rest and snaps to full color on hover. Drops straight into the existing 3-column grid.</p>
+
+    <div class="section-head"><span>// selected_projects</span><div class="rule"></div></div>
+
+    <div class="grid">
+      <!-- UAP Atlas -->
+      <article class="card">
+        <div class="topline"></div>
+        <div class="winbar"><div class="dots"><i></i><i></i><i></i></div><span class="winpath">~/projects/uap-atlas</span></div>
+        <div class="shot"><img src="shots/uap-atlas.jpeg" alt="UAP Atlas map"><div class="glow"></div></div>
+        <div class="body">
+          <span class="idx">project_01</span>
+          <h3 class="title">UAP Atlas</h3>
+          <p class="desc">161 declassified U.S. Department of War UFO/UAP files made browsable, mappable, and shareable. Geolocation-aware Leaflet map surfaces the closest sighting to you.</p>
+          <div class="tags"><span>JavaScript</span><span>Leaflet</span><span>Node.js</span><span>Static Site</span></div>
+          <div class="links"><a href="#">view_project →</a><a href="#">view_source →</a></div>
+        </div>
+      </article>
+
+      <!-- GridClean -->
+      <article class="card">
+        <div class="topline"></div>
+        <div class="winbar"><div class="dots"><i></i><i></i><i></i></div><span class="winpath">~/projects/gridclean</span></div>
+        <div class="shot"><img src="shots/gridclean-chart.jpeg" alt="GridClean forecast"><div class="glow"></div></div>
+        <div class="body">
+          <span class="idx">project_02</span>
+          <h3 class="title">GridClean</h3>
+          <p class="desc">Live grid carbon intensity (gCO₂/kWh) for any ZIP code, fusing EIA-930 fuel mix with EPA emission factors, plus an ETS forecast of the cleanest hours ahead.</p>
+          <div class="tags"><span>Python</span><span>FastAPI</span><span>TimescaleDB</span><span>Redis</span><span>Claude</span></div>
+          <div class="links"><a href="#">view_project →</a><a href="#">view_source →</a></div>
+        </div>
+      </article>
+
+      <!-- Market Pipeline -->
+      <article class="card">
+        <div class="topline"></div>
+        <div class="winbar"><div class="dots"><i></i><i></i><i></i></div><span class="winpath">~/projects/market-pipeline</span></div>
+        <div class="shot"><img src="shots/market-pipeline.jpeg" alt="Market Pipeline broadsheet"><div class="glow"></div></div>
+        <div class="body">
+          <span class="idx">project_03</span>
+          <h3 class="title">Market Pipeline</h3>
+          <p class="desc">Real-time market data pipeline with rolling z-score anomaly detection and a Java limit-order-book matching engine. FastAPI, Streamlit, Postgres, deployed on AWS.</p>
+          <div class="tags"><span>Python</span><span>Java</span><span>FastAPI</span><span>Postgres</span><span>Docker</span><span>AWS</span></div>
+          <div class="links"><a href="#">view_project →</a><a href="#">view_source →</a></div>
+        </div>
+      </article>
+
+      <!-- HelloMealio -->
+      <article class="card">
+        <div class="topline"></div>
+        <div class="winbar"><div class="dots"><i></i><i></i><i></i></div><span class="winpath">~/projects/hellomealio</span></div>
+        <div class="shot"><img src="shots/hellomealio.jpeg" alt="HelloMealio app"><div class="glow"></div></div>
+        <div class="body">
+          <span class="idx">project_04</span>
+          <h3 class="title">HelloMealio</h3>
+          <p class="desc">AI-powered dinner planning that generates weekly meal plans optimized for shared ingredients — minimizing grocery waste and spend. Shipping on iPhone.</p>
+          <div class="tags"><span>React Native</span><span>FastAPI</span><span>PostgreSQL</span><span>Gemini</span></div>
+          <div class="links"><a href="#">view_project →</a></div>
+        </div>
+      </article>
+
+      <!-- Career Twin (no image — graceful fallback) -->
+      <article class="card">
+        <div class="topline"></div>
+        <div class="winbar"><div class="dots"><i></i><i></i><i></i></div><span class="winpath">~/projects/career-twin</span></div>
+        <div class="shot" style="display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,rgba(0,232,122,.10),transparent 70%)">
+          <span style="font-family:'Fragment Mono',monospace;font-size:.7rem;color:var(--text-muted)">$ agent --status: online</span>
+          <div class="glow"></div>
+        </div>
+        <div class="body">
+          <span class="idx">project_05</span>
+          <h3 class="title">Career Twin Agent</h3>
+          <p class="desc">Agentic AI with full professional context. Handles nuanced conversations and recruiter outreach via email tools. (No screenshot — text-only cards still fit.)</p>
+          <div class="tags"><span>Next.js</span><span>Vercel AI SDK</span><span>Gemini</span><span>Resend</span></div>
+          <div class="links"><a href="#">view_project →</a><a href="#">view_source →</a></div>
+        </div>
+      </article>
+
+      <!-- ImIn (no image) -->
+      <article class="card">
+        <div class="topline"></div>
+        <div class="winbar"><div class="dots"><i></i><i></i><i></i></div><span class="winpath">~/projects/imin</span></div>
+        <div class="shot" style="display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,rgba(91,156,246,.10),transparent 70%)">
+          <span style="font-family:'Fragment Mono',monospace;font-size:.7rem;color:var(--text-muted)">$ enroll --t=0.9s ✓</span>
+          <div class="glow"></div>
+        </div>
+        <div class="body">
+          <span class="idx">project_06</span>
+          <h3 class="title">ImIn</h3>
+          <p class="desc">Automated course registration that enrolled students in under one second when slots opened. Served 50% of the student body.</p>
+          <div class="tags"><span>Full-Stack</span><span>Automation</span></div>
+          <div class="links"><a href="#">view_source →</a></div>
+        </div>
+      </article>
+    </div>
+
+    <p class="footer">concept 01 / 03 — terminal window cards · screenshots are live captures</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Project Image Concepts — Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Fragment+Mono&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet" />
+<style>
+  :root{--void:#080810;--surface:#0F0F1A;--green:#00E87A;--purple:#9B7FD4;--text:#E9E9F2;--text-dim:#A6A6B8;--text-muted:#5b5b70;--border:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--void);color:var(--text);font-family:"DM Sans",sans-serif;font-weight:300;min-height:100vh;padding:80px 24px}
+  .wrap{max-width:980px;margin:0 auto}
+  .tag{font-family:"Fragment Mono",monospace;font-size:.72rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase}
+  h1{font-family:"Syne",sans-serif;font-weight:800;font-size:2.4rem;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{color:var(--text-dim);max-width:620px;line-height:1.7;margin-bottom:48px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+  a.card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);background:var(--surface);padding:28px 24px;transition:border-color .3s,transform .3s,background .3s}
+  a.card:hover{border-color:var(--green);transform:translateY(-4px);background:#12121d}
+  .num{font-family:"Fragment Mono",monospace;font-size:.66rem;color:var(--text-muted);letter-spacing:.1em}
+  .ct{font-family:"Syne",sans-serif;font-weight:700;font-size:1.3rem;margin:14px 0 10px}
+  .cd{font-size:.84rem;line-height:1.65;color:var(--text-dim);margin-bottom:18px}
+  .go{font-family:"Fragment Mono",monospace;font-size:.7rem;color:var(--green)}
+  .foot{margin-top:40px;font-family:"Fragment Mono",monospace;font-size:.66rem;color:var(--text-muted)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tag">// project_image_concepts</div>
+    <h1>Three ways to add project imagery</h1>
+    <p class="lede">Each concept uses live screenshots of UAP Atlas, GridClean, Market Pipeline, and HelloMealio, themed to the Void Terminal aesthetic. Open each, compare, and pick one to build into the real site.</p>
+    <div class="cards">
+      <a class="card" href="approach-1-terminal-windows.html">
+        <div class="num">concept_01</div>
+        <div class="ct">Terminal Window Cards</div>
+        <div class="cd">Screenshots framed as terminal windows inside the existing 3-column grid. Most faithful to the current site.</div>
+        <div class="go">open →</div>
+      </a>
+      <a class="card" href="approach-2-editorial-showcase.html">
+        <div class="num">concept_02</div>
+        <div class="ct">Editorial Showcase</div>
+        <div class="cd">Big alternating rows with tilted browser-window screenshots and oversized headlines. Immersive and magazine-like.</div>
+        <div class="go">open →</div>
+      </a>
+      <a class="card" href="approach-3-bento-mosaic.html">
+        <div class="num">concept_03</div>
+        <div class="ct">Bento Mosaic</div>
+        <div class="cd">Full-bleed image tiles in an asymmetric bento grid with hover-reveal detail. The most visual option.</div>
+        <div class="go">open →</div>
+      </a>
+    </div>
+    <p class="foot">screenshots captured live · nothing here is wired into the site yet</p>
+  </div>
+</body>
+</html>
