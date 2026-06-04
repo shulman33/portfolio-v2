@@ -12,6 +12,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "GridClean",
+    description:
+      "Data-fusion API that computes the live carbon intensity (gCO₂/kWh) of the grid serving any ZIP code by multiplying real-time EIA-930 fuel mix against EPA emission factors, then forecasts the cleanest hours ahead with ETS prediction intervals. Includes a guardrailed Claude text-to-SQL layer with sqlglot AST validation and a read-only Postgres role. FastAPI, TimescaleDB, Redis.",
+    tags: ["Python", "FastAPI", "TimescaleDB", "Redis", "Claude", "Railway"],
+    links: [
+      { label: "view_project", url: "https://web-production-8ecb8.up.railway.app/app/" },
+      { label: "view_source", url: "https://github.com/shulman33/GridClean" },
+    ],
+  },
+  {
     title: "Market Pipeline",
     description:
       "Real-time market data pipeline with rolling z-score anomaly detection and a Java limit-order-book matching engine using price-time priority. Python WebSocket ingestor on Finnhub, FastAPI, Streamlit dashboard, Postgres. Deployed on AWS Lightsail with GitHub Actions CI.",
@@ -19,6 +29,16 @@ export const projects: Project[] = [
     links: [
       { label: "view_project", url: "https://shulman33.github.io/market-pipeline/" },
       { label: "view_source", url: "https://github.com/shulman33/market-pipeline" },
+    ],
+  },
+  {
+    title: "UAP Atlas",
+    description:
+      "Interactive archive that makes all 161 of the U.S. Department of War's declassified UFO/UAP files browsable, mappable, and shareable. Geolocation-aware map surfaces the closest sighting to you, a scroll-snap feed embeds declassified DVIDS videos and images, and a searchable browse view filters every record. Vanilla JS with a Node build step that statically generates 161 SEO pages, JSON-LD, and a sitemap.",
+    tags: ["JavaScript", "Leaflet", "Node.js", "Static Site"],
+    links: [
+      { label: "view_project", url: "https://uapatlas.world/" },
+      { label: "view_source", url: "https://github.com/shulman33/ufo-files" },
     ],
   },
   {

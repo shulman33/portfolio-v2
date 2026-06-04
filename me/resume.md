@@ -13,11 +13,22 @@ Technology Associate, Healthfirst                                          Sep 2
 
 PROJECTS
 
+GridClean (github.com/shulman33/GridClean)                                 June 2026 – Present
+• Built a data-fusion API that computes live grid carbon intensity (gCO₂/kWh) for any US ZIP code by joining real-time EIA-930 fuel mix against EPA emission factors—a commercial metric neither source publishes directly.
+• Engineered a 24-hour cleanest-hours forecast using statsmodels ETS with backtested prediction intervals, plus a CO₂-savings calculator for time-shifting electrical loads.
+• Shipped a guardrailed Claude text-to-SQL layer: forced tool calls, sqlglot AST validation against an allowlist of safe views, and a read-only Postgres role with statement timeouts to prevent injection or data fabrication.
+• Architected on FastAPI with TimescaleDB hypertables and Redis caching (~806 req/s cached, p99 < 250ms); verified with 47 tests and a runnable AI eval suite at 100% execution-match accuracy.
+
 Real-Time Market Data Platform (shulman33.github.io/market-pipeline)       May 2026 – Present
 • Architected a four-service microservices platform in Python and Java for real-time equity ingestion and order matching; containerized with Docker, deployed to Amazon Web Services (AWS), and shipped through a GitHub Actions CI/CD pipeline.
 • Engineered a limit-order-book matching engine in Java with price-time priority, applying data structures and algorithms (TreeMap, HashMap, doubly-linked FIFO queues) to keep order submission and cancellation fast; persisted to PostgreSQL via JDBC.
 • Built an async Python WebSocket client against a low-latency trade feed with auto-reconnect and a stale-stream watchdog; flagged real-time price anomalies with a hand-rolled rolling z-score detector and wrote each tick atomically to PostgreSQL.
 • Exposed the system via a FastAPI REST service and a Streamlit + Plotly dashboard; verified end-to-end through 46 automated tests with real PostgreSQL integration tests.
+
+UAP Atlas (uapatlas.world)                                                 May 2026 – Present
+• Transformed the U.S. Department of War's 161 declassified UFO/UAP records from a raw CSV into an interactive archive with map, feed, and browse views, built in vanilla JavaScript with no frontend framework.
+• Built a geolocation-aware Leaflet map using Haversine distance to surface the closest sighting to each visitor, plus a scroll-snap feed embedding declassified DVIDS videos and images.
+• Wrote a Node build pipeline that parses the source CSV and statically generates 161 per-record pages with JSON-LD schema, canonical tags, OG images, and a sitemap for SEO.
 
 HelloMealio (hellomealio.com)                                              March 2026 – Present
 • Engineered deterministic greedy + 1-swap algorithm to replace Gemini LLM meal planner; 250× faster (3s → 10ms) and beat LLM quality in 13 of 15 head-to-head trials.
