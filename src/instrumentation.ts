@@ -8,6 +8,8 @@ const shouldExportSpan: ShouldExportSpan = (span) => {
 
 export const langfuseSpanProcessor = new LangfuseSpanProcessor({
   shouldExportSpan,
+  // Serverless: export spans as they end so nothing is lost when the function freezes.
+  exportMode: "immediate",
 });
 
 const tracerProvider = new NodeTracerProvider({

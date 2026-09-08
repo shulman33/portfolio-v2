@@ -20,11 +20,11 @@ Honors-Awards
 Deans List
 Second Place Hackathon Winner
 Sam Shulman
-Enterprise Architect at Healthfirst | I build things that make people’s
+Technology Associate at Healthfirst | I build things that make people’s
 lives easier
 United States
 Summary
-I'm an Enterprise Architect at Healthfirst, where I design AWS-based
+I'm a Technology Associate at Healthfirst, where I design AWS-based
 systems for healthcare data exchange - event-driven pipelines, FHIR
 APIs, the kind of infrastructure that moves terabytes of patient data
 for federal compliance without anyone noticing.
@@ -33,7 +33,7 @@ architecture, and figuring out how to make healthcare systems
 actually talk to each other.
 I can't stop building things on the side. My biggest project right
 now is HelloMealio, an AI-powered dinner planning and recipe
-management app that I turned into my first company. My wife got
+management app that I'm building and shipping to the app stores. My wife got
 tired of buying one-off grocery ingredients that went to waste every
 week, so I built an app that stores your recipes and uses AI to
 generate meal plans optimized for overlapping ingredients—fewer
@@ -53,11 +53,8 @@ Open to connecting about architecture, healthcare tech, or
 interesting opportunities.
 Experience
 Healthfirst
-Enterprise Solutions Architect
-September 2025 - Present (7 months)
-Page 1 of 3
-
--- 1 of 3 --
+Technology Associate
+September 2025 - October 2026
 
 New York, NY
 Support healthcare interoperability initiatives by architecting AWS-based
@@ -76,7 +73,7 @@ solutions for HL7 FHIR resources and healthcare data exchange
 units, identifying integration opportunities and potential architectural risks
 AppHammer
 Full Stack Engineer
-January 2025 - July 2025 (7 months)
+January 2025 - July 2025
 - Developed backend APIs and managed data models using Django and
 Wagtail for a virtual vendor platform enabling remote product inquiries,
 effectively replacing traditional vendor fairs.
@@ -88,20 +85,17 @@ operations using React, TypeScript, and Refine, utilizing Antd UI components
 to enhance user management and permission workflows.
 Cognizant
 Software Engineer
-June 2024 - August 2024 (3 months)
+June 2024 - August 2024
 Teaneck, New Jersey, United States
 - Partnered with a team of interns to develop comprehensive Power BI reports
 from petabytes of healthcare data, enabling insurance companies to enhance
 population health and boost revenue.
 - Improved Power BI report visualization loading time by 80% through SQL
 query optimization, significantly boosting user experience and report efficiency.
-Page 2 of 3
-
--- 2 of 3 --
 
 SIDEARM Sports
 Jr. Developer
-April 2023 - October 2023 (7 months)
+April 2023 - October 2023
 Syracuse, New York, United States
 - Collaborated with a team of software engineers in an Agile environment,
 participating in daily stand-ups, sprint
@@ -120,7 +114,7 @@ on-demand service, allowing users to
 efficiently locate specific videos by sport.
 Katz School at Yeshiva University
 Research Assistant
-August 2022 - January 2023 (6 months)
+August 2022 - January 2023
 New York City Metropolitan Area
 Tasked with deploying microservice benchmarks and carrying out DDoS
 Attacks.
@@ -131,6 +125,3 @@ Syracuse University
 Information Technology · (2020 - 2021)
 Rae Kushner Yeshiva High School
 · (2015 - 2019)
-Page 3 of 3
-
--- 3 of 3 --

@@ -1,5 +1,11 @@
 # About Me: Sam Shulman
 
+## Where I'm At Right Now
+
+I'm starting a new role as a Forward Deployed Engineer at Rakiya on October 5, 2026. Rakiya is a brand-new startup, and I can't share much about the company or the work yet. Until then I'm wrapping up at Healthfirst, where I've been a Technology Associate since September 2025 working on healthcare interoperability on AWS.
+
+I'm genuinely excited about Rakiya, so I'm not actively job hunting. I'm still always happy to meet people, talk shop, and hear about interesting problems.
+
 ## Who I Am
 
 I'm a builder at heart. I discovered coding in high school when I chose a programming class over Spanish—and I've been hooked ever since. There's something magical about being able to build anything you can dream of with just code. That feeling has never left me.
@@ -34,21 +40,19 @@ I'm a big believer in AI-assisted development done right. Claude Code is a core 
 
 HelloMealio started at home. My wife Noa got sick of the weekly meal-planning struggle—spending time picking recipes, running to the grocery store for a bunch of one-off ingredients that would get used once and then go to waste. We were throwing away food and money every single week. So she pitched an idea: what if we could store all the recipes we actually cook in one place, and then let AI generate a weekly meal plan optimized for overlapping ingredients? Fewer one-off purchases, less waste, more savings.
 
-I built it. What started as a solution to our own problem turned into a full end-to-end SaaS application—React Native frontend, Python FastAPI backend, Postgres database—and eventually into an LLC. I'm officially a founder now, and that still feels surreal.
+I built it. What started as a solution to our own problem grew into a full end-to-end app—React Native frontend, Python FastAPI backend, Postgres database. I set up an LLC for it, mostly because that's what it takes to publish to the app stores. Calling myself a founder still feels a little surreal.
 
-There's something deeply fulfilling about building something from nothing, watching real people use it, and being able to point at it and say "I built that from the ground up." Taking HelloMealio from a kitchen-table concept to a real company has been one of the most exciting journeys of my life.
+To be clear, HelloMealio is still very much a work in progress. Development is ongoing, and it's a small project, not a business with a team or revenue behind it. But there's something deeply fulfilling about building something from nothing, watching real people use it, and being able to point at it and say "I built that from the ground up."
 
-It's also been the most humbling. I learned quickly that building the app is the easier part. The real challenge is marketing, acquiring users, and keeping them. That side of the business has stretched me in ways I didn't expect and taught me lessons no CS curriculum covers.
+It's also been humbling. I learned quickly that building the app is the easier part. Getting people to find it, try it, and keep using it is a whole different skill, and that side has stretched me in ways I didn't expect.
 
 On the technical side, Claude Code has been invaluable to my workflow, but AI tooling alone doesn't build production-grade software. I leaned heavily on my Computer Science and Distributed Systems background to architect an app that handles concurrent users with acceptable performance—replacing sequential database round-trips with optimized Postgres functions, load-testing and migrating to horizontally scaled infrastructure, and instrumenting the full stack for observability. The fundamentals matter, especially when real users are depending on what you ship.
 
-## What I'm Looking For
+## What I Care About in a Role
 
-I want roles where I can see real impact on users. The best feeling is knowing that something I built actually helped someone.
+I want to see real impact on users. The best feeling is knowing that something I built actually helped someone.
 
-Startup energy excites me—the fast pace, wearing multiple hats, seeing your work matter immediately. But I'm open to companies of all sizes if the opportunity is right.
-
-Remote or hybrid work is my preference, but I'm flexible for the right opportunity. What matters most to me is team culture and growth opportunities. I want to work with people who care about what they're building and push each other to get better.
+Startup energy is what drew me to Rakiya—the fast pace, wearing multiple hats, seeing your work matter immediately. What matters most to me is team culture and growth. I want to work with people who care about what they're building and push each other to get better.
 
 ---
 

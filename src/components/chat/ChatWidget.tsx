@@ -102,9 +102,8 @@ export default function ChatWidget() {
   const welcomeMessage: UIMessage = {
     id: "welcome",
     role: "assistant",
-    parts: [{ type: "text" as const, text: WELCOME_MESSAGE_TEXT }],
-    createdAt: new Date(),
-  } as UIMessage;
+    parts: [{ type: "text", text: WELCOME_MESSAGE_TEXT }],
+  };
 
   const displayMessages: UIMessage[] = hasMessages
     ? messages

@@ -1,10 +1,8 @@
 "use client";
 
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { Streamdown, type Components, type UrlTransform } from "streamdown";
 import { isToolUIPart, getToolName } from "ai";
 import type { UIMessage } from "ai";
-import type { ComponentPropsWithoutRef } from "react";
 
 interface ChatMessageProps {
   message: UIMessage;
@@ -13,6 +11,16 @@ interface ChatMessageProps {
 
 const TOOL_STATUS: Record<string, string> = {
   sendEmail: "sending introduction...",
+};
+
+// Model output is untrusted: only let https and mailto links through.
+const ALLOWED_PROTOCOLS = new Set(["https:", "mailto:"]);
+const safeUrl: UrlTransform = (url) => {
+  try {
+    return ALLOWED_PROTOCOLS.has(new URL(url).protocol) ? url : null;
+  } catch {
+    return null;
+  }
 };
 
 export default function ChatMessage({ message, isStreaming }: ChatMessageProps) {
@@ -40,25 +48,29 @@ export default function ChatMessage({ message, isStreaming }: ChatMessageProps) 
               );
             }
             return (
-              <div key={i}>
-                <div className="markdown-body">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    components={markdownComponents}
-                  >
-                    {part.text}
-                  </ReactMarkdown>
-                </div>
-                {isStreaming && i === message.parts.length - 1 && (
-                  <span className="cursor-blink" aria-hidden="true" />
-                )}
-              </div>
+              <Streamdown
+                key={i}
+                className="space-y-2"
+                components={markdownComponents}
+                controls={false}
+                skipHtml
+                urlTransform={safeUrl}
+                linkSafety={{ enabled: false }}
+                caret="block"
+                isAnimating={Boolean(isStreaming) && i === message.parts.length - 1}
+              >
+                {part.text}
+              </Streamdown>
             );
           }
 
           if (isToolUIPart(part)) {
             // Only show status while tool is executing, hide once output is available
-            if (part.state === "output-available" || part.state === "output-error" || part.state === "output-denied") {
+            if (
+              part.state === "output-available" ||
+              part.state === "output-error" ||
+              part.state === "output-denied"
+            ) {
               return null;
             }
             const toolName = getToolName(part);
@@ -84,14 +96,14 @@ export default function ChatMessage({ message, isStreaming }: ChatMessageProps) 
   );
 }
 
-const markdownComponents: ComponentPropsWithoutRef<
-  typeof ReactMarkdown
->["components"] = {
+const markdownComponents: Components = {
   p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
   strong: ({ children }) => (
     <strong className="font-medium text-text">{children}</strong>
   ),
-  em: ({ children }) => <em className="text-text-dim">{children}</em>,
+  em: ({ children }) => (
+    <em className="not-italic text-green/90">{children}</em>
+  ),
   a: ({ href, children }) => (
     <a
       href={href}

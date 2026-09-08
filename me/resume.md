@@ -1,12 +1,15 @@
 Samuel Shulman
-Teaneck, New Jersey, US | +1 (973) 699-8748 | samshulman6@gmail.com | github.com/shulman33 | samjshulman.com
+Teaneck, New Jersey, US | samshulman6@gmail.com | github.com/shulman33 | samjshulman.com
 
 PROFESSIONAL SUMMARY
-Software engineer passionate about full-stack development with hands-on experience across React, Next.js, FastAPI, and AWS. Currently building healthcare interoperability systems at Healthfirst while shipping side projects on nights and weekends. Self-motivated learner drawn to AI engineering and product-focused teams.
+Software engineer passionate about full-stack development with hands-on experience across React, Next.js, FastAPI, and AWS. Built healthcare interoperability systems at Healthfirst while shipping side projects on nights and weekends. Starting as a Forward Deployed Engineer at Rakiya, an early-stage startup, on October 5, 2026. Self-motivated learner drawn to AI engineering and product-focused teams.
 
 WORK EXPERIENCE
 
-Technology Associate, Healthfirst                                          Sep 2025 – Present
+Forward Deployed Engineer, Rakiya                                         Starting Oct 5, 2026
+• Joining a brand-new startup as a Forward Deployed Engineer. Details about the company and the work are not public yet.
+
+Technology Associate, Healthfirst                                          Sep 2025 – Oct 2026
 • Engineered address-matching algorithm using NLP, fuzzy matching, and rule-based scoring; cut manual claim adjudication from 50%+ to under 10% across 4M+ monthly claims.
 • Built Python sync service between Workato and LeanIX, automating documentation updates across 500+ APIs to eliminate stale architecture records.
 • Architected Cost Estimator PoC using AWS Step Functions to parallelize provider lookups across Lambdas, resolving N+1 bottleneck.
@@ -36,7 +39,7 @@ HelloMealio (hellomealio.com)                                              March
 • Built single-call Postgres RPC functions to consolidate multi-statement transactions; reduced API write latency by 82–95%, all writes under 300ms.
 • Integrated Sentry tracing across React Native, FastAPI, and Postgres; diagnosed and resolved production latency bottlenecks end-to-end.
 
-Career Twin                                                                Feb 2026 – Feb 2026
+Career Twin                                                                Feb 2026 – Present
 • Built streaming AI chat agent on Next.js using the Vercel AI SDK with Google Gemini, grounded in resume, LinkedIn, and personal context to answer in first person.
 • Integrated Resend API as an autonomous tool call; agent forwards recruiter messages plus AI-generated summaries to my inbox for follow-up.
 • Implemented Langfuse OpenTelemetry tracing across chat and summarization calls for end-to-end production observability of agent behavior.
